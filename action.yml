@@ -1,0 +1,50 @@
+name: 'Baseline Compatibility Check v1'
+description: 'Check web feature compatibility against Baseline standards'
+author: 'Baseline Suite'
+branding:
+  icon: 'check-circle'
+  color: 'green'
+
+inputs:
+  github-token:
+    description: 'GitHub token for posting comments'
+    required: false
+    default: ${{ github.token }}
+  baseline-year:
+    description: 'Target baseline year'
+    required: false
+    default: '2023'
+  allow-newly:
+    description: 'Allow newly available features'
+    required: false
+    default: 'true'
+  allow-limited:
+    description: 'Allow features with limited support'
+    required: false
+    default: 'false'
+  fail-on-error:
+    description: 'Fail the workflow if violations are found'
+    required: false
+    default: 'true'
+  files:
+    description: 'File patterns to scan (space-separated)'
+    required: false
+    default: '**/*.{js,ts,jsx,tsx,html,css}'
+  upload-sarif:
+    description: 'Upload SARIF results for Code Scanning'
+    required: false
+    default: 'true'
+
+outputs:
+  total-files:
+    description: 'Number of files scanned'
+  files-with-issues:
+    description: 'Number of files with compatibility issues'
+  total-violations:
+    description: 'Total number of violations found'
+  sarif-file:
+    description: 'Path to generated SARIF file'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
