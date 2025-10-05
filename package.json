@@ -1,0 +1,36 @@
+{
+  "name": "@baseline-suite/github-action",
+  "version": "1.0.0",
+  "description": "GitHub Action for Baseline compatibility checking",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "ncc build src/main.ts -o dist --source-map --license licenses.txt",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "github-action",
+    "baseline",
+    "compatibility",
+    "web-features"
+  ],
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/github": "^6.0.0",
+    "@baseline-suite/core": "workspace:*",
+    "globby": "^13.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@vercel/ncc": "^0.38.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.3.1"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omkardongre/Baseline-Developer-Suite",
+    "directory": "packages/github-action"
+  }
+}
